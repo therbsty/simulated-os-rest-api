@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
 @RestController
 public class TestController {
 	@CrossOrigin()
 	@GetMapping("/test/{num}")
-	public ResponseEntity<String> setCustomerName(@PathVariable int num){
+	public ResponseEntity<String> testget(@PathVariable int num){
 		if (num<0) {
             return new ResponseEntity<>(num+" is less than 0",HttpStatus.NOT_FOUND);
             } 
