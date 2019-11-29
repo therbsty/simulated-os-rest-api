@@ -5,7 +5,7 @@ public class MemoryManager {
 	private MemoryTable memoryTable;
 	private JobTable jobTable;
 	
-	public int getBlock(Job newJob) {}
+	public int getBlockTable(Job newJob) {}
 	
 	public boolean loadJob(Job newJob, int blockId) {}
 	
@@ -13,15 +13,27 @@ public class MemoryManager {
 
 	public void addoJobList(Job newJob, int blackId) {}
 	
-	public BlockTable getBlockTable() {}
+	public BlockTable getBlockTable() {
+		return blockTable;
+	}
 	
-	public MemoryTable getMemoryTable() {}
+	public MemoryTable getMemoryTable() {
+		return memoryTable;
+	}
 	
-	public JobTable getJobTable() {}
+	public JobTable getJobTable() {
+		return jobTable;
+	}
 	
-	public void setBlockTable(BlockTable blockTable) {}
+	public void setBlockTable(BlockTable blockTable) {
+		this.blockTable = blockTable;
+	}
 	
-	public void setMemoryTable(MemoryTable memoryTable) {}
+	public void setMemoryTable(MemoryTable memoryTable) {
+		this.memoryTable = memoryTable;
+	}
 	
-	public void setJobTable(JobTable jobTable) {}
+	public void setJobTable(JobTable jobTable) {
+		this.jobTable = jobTable;
+	}
 }
