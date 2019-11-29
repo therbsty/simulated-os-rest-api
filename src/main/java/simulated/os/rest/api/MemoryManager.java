@@ -5,13 +5,14 @@ public class MemoryManager {
 	private MemoryTable memoryTable;
 	private JobTable jobTable;
 	
-	public int getBlockTable(Job newJob) {}
 	
 	public boolean loadJob(Job newJob, int blockId) {}
 	
+	public int getBlock(Job newJob) {}
+	
 	public void updateBusy(int blockId) {}
 
-	public void addoJobList(Job newJob, int blackId) {}
+	public void addToJobList(Job newJob, int blackId) {}
 	
 	public BlockTable getBlockTable() {
 		return blockTable;
@@ -36,4 +37,7 @@ public class MemoryManager {
 	public void setJobTable(JobTable jobTable) {
 		this.jobTable = jobTable;
 	}
+	
+	
+	
 }

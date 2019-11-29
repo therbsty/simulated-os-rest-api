@@ -24,4 +24,24 @@ public class DataBase {
 	public static AtomicInteger getJobCounter() {
 		return jobCounter;
 	}
+	
+	public void setBlockTable(blockTable blockTable) {
+		this.blockTable = blockTable;
+	}
+	
+	public void setMemoryTable(MemoryTable memoryTable) {
+		this.memoryTable = memoryTable;
+	}
+	
+	public void setJobTable(JobTable jobTable) {
+		this.jobTable = jobTable;
+	}
+	
+	public void setBlockCounter(AtomicInterger blockCounter) {
+		this.blockCounter = blockCounter;
+	}
+	
+	public void setJobCounter(AtomicInterger jobCounter) {
+		this.jobCounter = jobCounter;
+	}
 }

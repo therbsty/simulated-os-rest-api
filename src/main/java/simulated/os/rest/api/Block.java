@@ -7,17 +7,30 @@ public class Block {
 	private int size;
 	private boolean busy;
 	
-	public void Block(int blockID, int start, int end) {}
+	public void Block(int start, int end) {
+		this.start = start;
+		this.end = end;
+	}
 	
-	public int getBlockID() {}
+	public int getBlockID() {
+		return blockID;
+	}
 	
-	public int getStart() {}
+	public int getStart() {
+		return start;
+	}
 	
-	public int getEnd() {}
+	public int getEnd() {
+		return end;
+	}
 	
-	public int getSize() {}
+	public int getSize() {
+		return size;
+	}
 	
-	public boolean getBusy() {}
+	public boolean getBusy() {
+		return busy;
+	}
 	
 	public void setBlock(int blockID) {
 		this.blockID = blockID;
