@@ -25,7 +25,7 @@ public class DataBase {
 		return jobCounter;
 	}
 	
-	public void setBlockTable(blockTable blockTable) {
+	public void setBlockTable(BlockTable blockTable) {
 		this.blockTable = blockTable;
 	}
 	
@@ -37,11 +37,11 @@ public class DataBase {
 		this.jobTable = jobTable;
 	}
 	
-	public void setBlockCounter(AtomicInterger blockCounter) {
+	public void setBlockCounter(AtomicInteger blockCounter) {
 		this.blockCounter = blockCounter;
 	}
 	
-	public void setJobCounter(AtomicInterger jobCounter) {
+	public void setJobCounter(AtomicInteger jobCounter) {
 		this.jobCounter = jobCounter;
 	}
 }

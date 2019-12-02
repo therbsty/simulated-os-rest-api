@@ -7,9 +7,12 @@ public class Block {
 	private int size;
 	private boolean busy;
 	
-	public void Block(int start, int end) {
+	public Block(int start, int end) {
 		this.start = start;
 		this.end = end;
+		this.size = end - start + 1;
+		this.busy = false;
+		this.blockID = DataBase.getBlockCounter().getAndIncrement();
 	}
 	
 	public int getBlockID() {
