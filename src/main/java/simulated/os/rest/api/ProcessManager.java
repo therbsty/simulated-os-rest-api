@@ -9,8 +9,8 @@ public class ProcessManager {
 	private int processor2CurrentJob;
 	private int processor2RemainingRuns;
 	
+	public ProcessManager() {}
 	
-	//tables getters and setters
 	public BlockTable getBlockTable() {
 		return blockTable;
 	}
@@ -23,7 +23,17 @@ public class ProcessManager {
 		return jobTable;
 	}
 	
+	public int getProcessor2TimeQuantum() {
+		return processor2TimeQuantum;
+	}
 	
+	public int getProcessor2CurrentJob() {
+		return processor2CurrentJob;
+	}
+	
+	public int getProcessor2RemainingRuns() {
+		return processor2RemainingRuns;
+	}
 	
 	public void setBlockTable(BlockTable blockTable) {
 		this.blockTable = blockTable;
@@ -37,24 +47,6 @@ public class ProcessManager {
 		this.jobTable = jobTable;
 	}
 	
-	
-	
-	
-	//processors getters and setters
-	public int getProcessor2TimeQuantum() {
-		return processor2TimeQuantum;
-	}
-	
-	public int getProcessor2CurrentJob() {
-		return processor2CurrentJob;
-	}
-	
-	public int getProcessor2RemainingRuns() {
-		return processor2RemainingRuns;
-	}
-	
-	
-	
 	public void setProcessor2TimeQuantum(int processor2TimeQuantum) {
 		this.processor2TimeQuantum = processor2TimeQuantum;
 		
@@ -64,15 +56,13 @@ public class ProcessManager {
 		this.processor2CurrentJob = processor2CurrentJob;
 		
 	}
+	
 	public void setProcessor2RemainingRuns(int processor2RemainingRuns) {
 		this.processor2RemainingRuns = processor2RemainingRuns;
 		
 	}
-	
-	
-	
-	
-	public void runProcessor() {}
+
+	public void runProcessors() {}
 	
 	private void updateBusy(int jobID) {}
 	

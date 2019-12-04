@@ -1,11 +1,13 @@
 package main.java.simulated.os.rest.api;
 
+import java.util.ArrayDeque;
+
 public class Job {
 	private ArrayDeque<String> instructions;
 	private int blockID;
 	private int jobID;
 	
-	public void Job(int blockID) {}
+	public Job(int blockID) {}
 	
 	public ArrayDeque<String> getInstructions(){}
 	
@@ -14,7 +16,7 @@ public class Job {
 	}
 	
 	public int getJobID() {
-		return JobID;
+		return jobID;
 	}
 	
 	public void setInstructions(ArrayDeque<String> instructions) {}
@@ -26,8 +28,5 @@ public class Job {
 	public void addInstruction(String instruction) {}
 	
 	public String removeInstruction() {}
-	
-	
-	}
 
 }

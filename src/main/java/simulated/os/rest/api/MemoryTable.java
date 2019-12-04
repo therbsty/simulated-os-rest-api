@@ -1,11 +1,11 @@
 package main.java.simulated.os.rest.api;
 
 public class MemoryTable {
-	private Array<String> memoryList;
+	private String[] memoryList;
 	
-	public void MemoryTable() {}
+	public MemoryTable() {}
 	
-	public Array<String> getMemoryList(){}
+	public String[] getMemoryList() {}
 	
-	public void setMemoryList(Array<string> addressList) {}
+	public void setMemoryList(String[] memoryList) {}
 }
