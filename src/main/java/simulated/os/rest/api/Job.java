@@ -7,8 +7,8 @@ public class Job {
 	private int blockID;
 	private int jobID;
 	
-	//set blockid =  blockid set jobid = atomic counter and inc it
-	public Job(int blockID) {}
+	//set blockid =  -1 set jobid = atomic counter and inc it
+	public Job() {}
 	
 	public ArrayDeque<String> getInstructions(){}
 	
