@@ -9,6 +9,8 @@ public class ProcessManager {
 	private int processor2CurrentJob;
 	private int processor2RemainingRuns;
 	
+	private String outPut = "";
+	
 	public ProcessManager() {}
 	
 	public BlockTable getBlockTable() {
@@ -34,6 +36,9 @@ public class ProcessManager {
 	public int getProcessor2RemainingRuns() {
 		return processor2RemainingRuns;
 	}
+	public String getOutPut() {
+		return outPut;
+	}
 	
 	public void setBlockTable(BlockTable blockTable) {
 		this.blockTable = blockTable;
@@ -49,20 +54,27 @@ public class ProcessManager {
 	
 	public void setProcessor2TimeQuantum(int processor2TimeQuantum) {
 		this.processor2TimeQuantum = processor2TimeQuantum;
-		
 	}
 
 	public void setProcessor2CurrentJob(int processor2CurrentJob) {
 		this.processor2CurrentJob = processor2CurrentJob;
-		
 	}
 	
 	public void setProcessor2RemainingRuns(int processor2RemainingRuns) {
 		this.processor2RemainingRuns = processor2RemainingRuns;
-		
 	}
 
-	public void runProcessors() {}
+	public void setOutPut(String outPut) {
+		this.outPut = outPut;
+	}
+	public void runProcessors() {
+		Job p1;
+		Job p2;
+		if(jobTable.getJobList().size()==0) {
+			
+		}
+		jobTable.getJobList().forEach( (key,value) -> {});
+	}
 	
 	private void updateBusy(int jobID) {}
 	
