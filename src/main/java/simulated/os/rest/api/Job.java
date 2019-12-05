@@ -7,6 +7,7 @@ public class Job {
 	private int blockID;
 	private int jobID;
 	
+	//set blockid =  blockid set jobid = atomic counter and inc it
 	public Job(int blockID) {}
 	
 	public ArrayDeque<String> getInstructions(){}
@@ -25,8 +26,10 @@ public class Job {
 	
 	public void setJobID(int jobID) {}
 	
+	// add instruction to back of dequeue
 	public void addInstruction(String instruction) {}
 	
+	// remove and return front of dequeue
 	public String removeInstruction() {}
 
 }

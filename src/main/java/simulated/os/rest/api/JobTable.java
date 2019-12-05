@@ -11,8 +11,10 @@ public class JobTable {
 	
 	public void setJoblist(TreeMap<Integer,Job> jobList) {}
 	
+	// add a job to joblist using jobid as key and job as value
 	public void addJob(Job job) {}
 	
-	public void removeJob() {}
+	//remove job from joblist by key(jobID)
+	public void removeJob(int jobID) {}
 
 }
