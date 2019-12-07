@@ -38,16 +38,43 @@ public class MemoryManager {
 	// add the job to the memory cells the block says
 	// call updateBusy
 	// call addToJob list
-	public boolean loadJob(Job newJob) {}
+	public boolean loadJob(Job newJob) {
+		int result;
+		result = memoryTable.getBlock(newJob);
+		if(result <= -1) {
+			return false;
+		}
+		else {
+			newJob.setJobID(result);
+			memoryTable.add(newJob);
+			updateBusy();
+			addToJobList
+			
+		}
+	}
 	
 	// return the block id of the smallest block the job will fit in
 	// if it wont fit in any return -1
-	private int getBlock(Job newJob) {}
+	///NEED TO WORK ON IT
+	private static int getBlock(Job newJob) {
+		if(Block) {
+		newJob.getBlockID();
+		}
+		else {
+			return -1;
+		}
+		
+	}
 	
 	// set the block busy with that id to true
-	private void updateBusy(int blockId) {}
+	private void updateBusy(int blockId) {
+		blockId.setBusy(true);
+		 
+	}
 	
 	// call addJob with newJob and newJob's jobID as parameters
-	private void addToJobList(Job newJob) {}
+	private static void addToJobList(Job newJob) {}
+	addJob(newJob);
+	
 	
 }
