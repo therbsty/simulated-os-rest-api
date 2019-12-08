@@ -1,17 +1,23 @@
 package main.java.simulated.os.rest.api;
 
 public class ProcessManager {
-	private BlockTable blockTable;
-	private MemoryTable memoryTable;
-	private JobTable jobTable;
+	private static BlockTable blockTable = DataBase.getBlockTable();
+	private static MemoryTable memoryTable = DataBase.getMemoryTable();
+	private static JobTable jobTable = DataBase.getJobTable();
 	
 	private int processor2TimeQuantum;
 	private int processor2CurrentJob;
 	private int processor2RemainingRuns;
 	
-	private String outPut = "";
+	private String outPut;
 	
-	public ProcessManager() {}
+	public ProcessManager() {
+		processor2TimeQuantum = 4;
+		processor2CurrentJob = -1;
+		processor2RemainingRuns = 4;
+		outPut= "No Jobs To Run";
+		
+	}
 	
 	public BlockTable getBlockTable() {
 		return blockTable;
@@ -68,18 +74,51 @@ public class ProcessManager {
 		this.outPut = outPut;
 	}
 	public void runProcessors() {
-		Job p1;
-		Job p2;
+		Job runningJob = null;
 		if(jobTable.getJobList().size()==0) {
-			
+			outPut = "No Jobs To Run";
 		}
-		jobTable.getJobList().forEach( (key,value) -> {});
+		else {
+			if(processor2RemainingRuns==0 && jobTable.getJobList().higherKey(processor2CurrentJob)==null) {
+				processor2CurrentJob = -1;
+				runningJob = jobTable.getJobList().get(jobTable.getJobList().ceilingKey(processor2CurrentJob));
+				processor2RemainingRuns=4;
+			}
+			else if(processor2RemainingRuns==0){
+				runningJob = jobTable.getJobList().get(jobTable.getJobList().higherKey(processor2CurrentJob));
+				processor2CurrentJob = runningJob.getJobID();
+				processor2RemainingRuns=4;
+			}
+			else {
+				runningJob = jobTable.getJobList().get(jobTable.getJobList().ceilingKey(processor2CurrentJob));
+				processor2CurrentJob = runningJob.getJobID();
+				processor2RemainingRuns--;
+			}
+			
+			if(runningJob.getInstructions().size()==1) {
+				outPut = runningJob.removeInstruction();
+				ProcessManager.updateBusy(runningJob.getJobID());
+				ProcessManager.removeJobFromMemory(runningJob.getJobID());
+				ProcessManager.removeJobFromJobList(runningJob.getJobID());
+				processor2RemainingRuns=4;
+			}
+			else {
+				outPut = runningJob.removeInstruction();
+			}
+		}
 	}
 	
-	private void updateBusy(int jobID) {}
+	private static void updateBusy(int jobID) {
+		blockTable.getBlockList().get(jobTable.getJobList().get(jobID).getBlockID()).setBusy(false);
+	}
+	private static void removeJobFromMemory(int jobID) {
+		Block blockToRemove = blockTable.getBlockList().get(jobTable.getJobList().get(jobID).getBlockID());
+		for(int i=0; i<blockToRemove.getSize(); i++) {
+			memoryTable.getMemoryList()[blockToRemove.getStart() + i] = "";
+		}
+	}
 	
-	private void removeJobFromMemory(int jobID) {}
-	
-	private void removeJobFromJobList(int jobID) {}
-
+	private static void removeJobFromJobList(int jobID) {
+		jobTable.getJobList().remove(jobID);
+	}
 }
