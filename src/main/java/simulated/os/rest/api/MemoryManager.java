@@ -39,17 +39,20 @@ public class MemoryManager {
 	// call updateBusy
 	// call addToJob list
 	public boolean loadJob(Job newJob) {
-		int result;
-		result = memoryTable.getBlock(newJob);
-		if(result <= -1) {
+		int blockid;
+		blockid = MemoryManager.getBlock(newJob);
+		if(blockid <= -1) {
 			return false;
 		}
 		else {
-			newJob.setJobID(result);
-			memoryTable.add(newJob);
-			updateBusy();
-			addToJobList
-			
+			newJob.setBlockID(blockid);
+			String[] instructionArray = (String[]) newJob.getInstructions().toArray();
+			for(int i=0; i<instructionArray.length; i++) {
+				memoryTable.getMemoryList()[blockTable.getBlockList().get(blockid).getStart() + i] = instructionArray[i];
+			}
+			MemoryManager.updateBusy(blockid);
+			MemoryManager.addToJobList(newJob);	
+			return true;
 		}
 	}
 	
@@ -59,12 +62,13 @@ public class MemoryManager {
 	private static int getBlock(Job newJob) {
 		int returnID = -1;
 		int minSize = 99;
-		blockTable.getBlockList().forEach((key,value) -> {
-			if(value.getSize()<minSize && value.getSize()>=newJob.getInstructions().size() && value.getBusy()==false) {
-				minSize = value.getSize();
-				returnID = key;
+		Block[] blockarray = (Block[]) blockTable.getBlockList().values().toArray();
+		for (int i = 0; i<blockarray.length; i++) {
+			if(blockarray[i].getSize()<minSize && blockarray[i].getSize()>=newJob.getInstructions().size() && blockarray[i].getBusy()==false) {
+				minSize = blockarray[i].getSize();
+				returnID = blockarray[i].getBlockID();
 			}
-		});
+		}
 		return returnID;
 	}
 	
