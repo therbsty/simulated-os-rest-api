@@ -1,9 +1,9 @@
 package main.java.simulated.os.rest.api;
 
 public class MemoryManager {
-	private BlockTable blockTable;
-	private MemoryTable memoryTable;
-	private JobTable jobTable;
+	private static BlockTable blockTable = DataBase.getBlockTable();
+	private static MemoryTable memoryTable = DataBase.getMemoryTable();
+	private static JobTable jobTable = DataBase.getJobTable();
 	
 	public MemoryManager() {}
 	
@@ -57,24 +57,24 @@ public class MemoryManager {
 	// if it wont fit in any return -1
 	///NEED TO WORK ON IT
 	private static int getBlock(Job newJob) {
-		if(Block) {
-		newJob.getBlockID();
-		}
-		else {
-			return -1;
-		}
-		
+		int returnID = -1;
+		int minSize = 99;
+		blockTable.getBlockList().forEach((key,value) -> {
+			if(value.getSize()<minSize && value.getSize()>=newJob.getInstructions().size() && value.getBusy()==false) {
+				minSize = value.getSize();
+				returnID = key;
+			}
+		});
+		return returnID;
 	}
 	
 	// set the block busy with that id to true
-	private void updateBusy(int blockId) {
-		blockId.setBusy(true);
-		 
+	private static void updateBusy(int blockId) {
+		blockTable.getBlockList().get(blockId).setBusy(true);	 
 	}
 	
 	// call addJob with newJob and newJob's jobID as parameters
-	private static void addToJobList(Job newJob) {}
-	addJob(newJob);
-	
-	
+	private static void addToJobList(Job newJob) {
+		jobTable.addJob(newJob);
+	}
 }
