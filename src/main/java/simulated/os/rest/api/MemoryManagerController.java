@@ -10,6 +10,32 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+@RestController
 public class MemoryManagerController {
-
+	
+	private static BlockTable blockTable = DataBase.getBlockTable();
+	private static MemoryTable memoryTable = DataBase.getMemoryTable();
+	private static JobTable jobTable = DataBase.getJobTable();
+	
+	@CrossOrigin()
+	@PostMapping("/memorymanager/newjob")
+	public ResponseEntity<Object> addNewJob(){
+		if (false) {
+            return new ResponseEntity<>("bad",HttpStatus.NOT_FOUND);
+            } 
+		else {
+			return new ResponseEntity<>("good",HttpStatus.OK);
+		}
+	}
+	
+	@CrossOrigin()
+	@GetMapping("/memorymanager/getmemorytable")
+	public ResponseEntity<Object> getMemoryTable(){
+		if (false) {
+            return new ResponseEntity<>("bad",HttpStatus.NOT_FOUND);
+            } 
+		else {
+			return new ResponseEntity<>("good",HttpStatus.OK);
+		}
+	}
 }
