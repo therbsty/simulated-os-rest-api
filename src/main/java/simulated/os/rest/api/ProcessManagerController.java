@@ -22,7 +22,7 @@ public class ProcessManagerController {
 	@PutMapping("/processmanager/run")
 	public ResponseEntity<Object> run(){
 		processManager.runProcessors();
-		return new ResponseEntity<>("",HttpStatus.OK);
+		return new ResponseEntity<>("ran",HttpStatus.OK);
 	}
 	
 	@CrossOrigin()
