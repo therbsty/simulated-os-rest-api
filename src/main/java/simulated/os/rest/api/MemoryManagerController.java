@@ -1,9 +1,6 @@
 package main.java.simulated.os.rest.api;
 
 import org.springframework.web.bind.annotation.RestController;
-
-import ordersystem.Customer;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;

@@ -20,15 +20,15 @@ public class MemoryManager {
 	}
 	
 	public void setBlockTable(BlockTable blockTable) {
-		this.blockTable = blockTable;
+		MemoryManager.blockTable = blockTable;
 	}
 	
 	public void setMemoryTable(MemoryTable memoryTable) {
-		this.memoryTable = memoryTable;
+		MemoryManager.memoryTable = memoryTable;
 	}
 	
 	public void setJobTable(JobTable jobTable) {
-		this.jobTable = jobTable;
+		MemoryManager.jobTable = jobTable;
 	}
 	
 	// call getBlock save the result
