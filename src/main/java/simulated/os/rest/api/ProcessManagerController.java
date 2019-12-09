@@ -12,5 +12,22 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 public class ProcessManagerController {
-
+	
+	private static BlockTable blockTable = DataBase.getBlockTable();
+	private static MemoryTable memoryTable = DataBase.getMemoryTable();
+	private static JobTable jobTable = DataBase.getJobTable();
+	private ProcessManager processManager = new ProcessManager();
+	
+	@CrossOrigin()
+	@PutMapping("/processmanager/run")
+	public ResponseEntity<Object> run(){
+		processManager.runProcessors();
+		return new ResponseEntity<>("",HttpStatus.OK);
+	}
+	
+	@CrossOrigin()
+	@GetMapping("/processmanager/getoutput")
+	public ResponseEntity<Object> getOutPut(){	
+		return new ResponseEntity<>(DataBase.getOutPut(),HttpStatus.OK);
+	}
 }

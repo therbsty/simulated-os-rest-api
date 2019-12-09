@@ -23,7 +23,7 @@ public class MemoryManagerController {
 	public ResponseEntity<Object> addNewJob(@RequestBody JobInstructions jobInstructions){
 		Job newJob = new Job();
 		int i=0;
-		while(i<jobInstructions.getInstructions().length && !(jobInstructions.getInstructions()[i].equals(""))) {
+		while(i<jobInstructions.getInstructions().length && !(jobInstructions.getInstructions()[i].equals("!"))) {
 			newJob.addInstruction(jobInstructions.getInstructions()[i]);
 			i++;
 		}
