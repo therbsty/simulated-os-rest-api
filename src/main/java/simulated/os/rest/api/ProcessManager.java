@@ -68,20 +68,23 @@ public class ProcessManager {
 			DataBase.setOutPut("No Jobs To Run");
 		}
 		else {
-			if(processor2RemainingRuns==0 && jobTable.getJobList().higherKey(processor2CurrentJob)==null) {
+			if(processor2RemainingRuns==1 && jobTable.getJobList().higherKey(processor2CurrentJob)==null) {
 				processor2CurrentJob = -1;
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().ceilingKey(processor2CurrentJob));
 				processor2RemainingRuns=4;
+				//DataBase.setOutPut("1");
 			}
 			else if(processor2RemainingRuns==0){
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().higherKey(processor2CurrentJob));
 				processor2CurrentJob = runningJob.getJobID();
 				processor2RemainingRuns=4;
+				//DataBase.setOutPut("2");
 			}
 			else {
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().ceilingKey(processor2CurrentJob));
 				processor2CurrentJob = runningJob.getJobID();
 				processor2RemainingRuns--;
+				//DataBase.setOutPut("3");
 			}
 			
 			if(runningJob.getInstructions().size()==1) {
