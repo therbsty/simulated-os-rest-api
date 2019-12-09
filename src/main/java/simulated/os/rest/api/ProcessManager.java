@@ -4,7 +4,6 @@ public class ProcessManager {
 	private static BlockTable blockTable = DataBase.getBlockTable();
 	private static MemoryTable memoryTable = DataBase.getMemoryTable();
 	private static JobTable jobTable = DataBase.getJobTable();
-	//private static String outPut = DataBase.getOutPut();
 	
 	private int processor2TimeQuantum;
 	private int processor2CurrentJob;
@@ -13,9 +12,7 @@ public class ProcessManager {
 	public ProcessManager() {
 		processor2TimeQuantum = 4;
 		processor2CurrentJob = -1;
-		processor2RemainingRuns = 4;
-		DataBase.setOutPut("No Jobs To Run");
-		
+		processor2RemainingRuns = 4;	
 	}
 	
 	public BlockTable getBlockTable() {
@@ -88,14 +85,14 @@ public class ProcessManager {
 			}
 			
 			if(runningJob.getInstructions().size()==1) {
-				DataBase.setOutPut(runningJob.removeInstruction());
+				DataBase.setOutPut("Job "+runningJob.getJobID()+" Ran Instruction "+runningJob.removeInstruction()+" And Finished");
 				ProcessManager.updateBusy(runningJob.getJobID());
 				ProcessManager.removeJobFromMemory(runningJob.getJobID());
 				ProcessManager.removeJobFromJobList(runningJob.getJobID());
 				processor2RemainingRuns=4;
 			}
 			else {
-				DataBase.setOutPut(runningJob.removeInstruction());
+				DataBase.setOutPut("Job "+runningJob.getJobID()+" Ran Instruction "+runningJob.removeInstruction());
 			}
 		}
 	}

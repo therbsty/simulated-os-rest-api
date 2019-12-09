@@ -52,7 +52,7 @@ public class MemoryManager {
 			}
 			MemoryManager.updateBusy(blockid);
 			MemoryManager.addToJobList(newJob);
-			DataBase.setOutPut("Job Was Loaded In Block :"+blockid);
+			DataBase.setOutPut("Job "+newJob.getJobID()+" Was Loaded In Block "+blockid);
 			return true;
 		}
 	}
