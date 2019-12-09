@@ -4,18 +4,17 @@ public class ProcessManager {
 	private static BlockTable blockTable = DataBase.getBlockTable();
 	private static MemoryTable memoryTable = DataBase.getMemoryTable();
 	private static JobTable jobTable = DataBase.getJobTable();
+	//private static String outPut = DataBase.getOutPut();
 	
 	private int processor2TimeQuantum;
 	private int processor2CurrentJob;
 	private int processor2RemainingRuns;
 	
-	private String outPut;
-	
 	public ProcessManager() {
 		processor2TimeQuantum = 4;
 		processor2CurrentJob = -1;
 		processor2RemainingRuns = 4;
-		outPut= "No Jobs To Run";
+		DataBase.setOutPut("No Jobs To Run");
 		
 	}
 	
@@ -42,20 +41,17 @@ public class ProcessManager {
 	public int getProcessor2RemainingRuns() {
 		return processor2RemainingRuns;
 	}
-	public String getOutPut() {
-		return outPut;
-	}
 	
 	public void setBlockTable(BlockTable blockTable) {
-		this.blockTable = blockTable;
+		ProcessManager.blockTable = blockTable;
 	}
 	
 	public void setMemoryTable(MemoryTable memoryTable) {
-		this.memoryTable = memoryTable;
+		ProcessManager.memoryTable = memoryTable;
 	}
 	
 	public void setJobTable(JobTable jobTable) {
-		this.jobTable = jobTable;
+		ProcessManager.jobTable = jobTable;
 	}
 	
 	public void setProcessor2TimeQuantum(int processor2TimeQuantum) {
@@ -69,14 +65,10 @@ public class ProcessManager {
 	public void setProcessor2RemainingRuns(int processor2RemainingRuns) {
 		this.processor2RemainingRuns = processor2RemainingRuns;
 	}
-
-	public void setOutPut(String outPut) {
-		this.outPut = outPut;
-	}
 	public void runProcessors() {
 		Job runningJob = null;
 		if(jobTable.getJobList().size()==0) {
-			outPut = "No Jobs To Run";
+			DataBase.setOutPut("No Jobs To Run");
 		}
 		else {
 			if(processor2RemainingRuns==0 && jobTable.getJobList().higherKey(processor2CurrentJob)==null) {
@@ -96,14 +88,14 @@ public class ProcessManager {
 			}
 			
 			if(runningJob.getInstructions().size()==1) {
-				outPut = runningJob.removeInstruction();
+				DataBase.setOutPut(runningJob.removeInstruction());
 				ProcessManager.updateBusy(runningJob.getJobID());
 				ProcessManager.removeJobFromMemory(runningJob.getJobID());
 				ProcessManager.removeJobFromJobList(runningJob.getJobID());
 				processor2RemainingRuns=4;
 			}
 			else {
-				outPut = runningJob.removeInstruction();
+				DataBase.setOutPut(runningJob.removeInstruction());
 			}
 		}
 	}

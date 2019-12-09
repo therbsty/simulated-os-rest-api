@@ -8,6 +8,7 @@ public class DataBase {
 	private static JobTable jobTable = new JobTable();
 	private static AtomicInteger blockCounter = new AtomicInteger();
 	private static AtomicInteger jobCounter = new AtomicInteger();
+	private static String outPut = "";
 	
 	public static BlockTable getBlockTable() {
 		return blockTable;
@@ -24,24 +25,30 @@ public class DataBase {
 	public static AtomicInteger getJobCounter() {
 		return jobCounter;
 	}
-	
-	public void setBlockTable(BlockTable blockTable) {
-		this.blockTable = blockTable;
+	public static String getOutPut() {
+		return outPut;
 	}
 	
-	public void setMemoryTable(MemoryTable memoryTable) {
-		this.memoryTable = memoryTable;
+	public static void setBlockTable(BlockTable blockTable) {
+		DataBase.blockTable = blockTable;
 	}
 	
-	public void setJobTable(JobTable jobTable) {
-		this.jobTable = jobTable;
+	public static void setMemoryTable(MemoryTable memoryTable) {
+		DataBase.memoryTable = memoryTable;
 	}
 	
-	public void setBlockCounter(AtomicInteger blockCounter) {
-		this.blockCounter = blockCounter;
+	public static void setJobTable(JobTable jobTable) {
+		DataBase.jobTable = jobTable;
 	}
 	
-	public void setJobCounter(AtomicInteger jobCounter) {
-		this.jobCounter = jobCounter;
+	public static void setBlockCounter(AtomicInteger blockCounter) {
+		DataBase.blockCounter = blockCounter;
+	}
+	
+	public static void setJobCounter(AtomicInteger jobCounter) {
+		DataBase.jobCounter = jobCounter;
+	}
+	public static void setOutPut(String outPut) {
+		DataBase.outPut = outPut;
 	}
 }

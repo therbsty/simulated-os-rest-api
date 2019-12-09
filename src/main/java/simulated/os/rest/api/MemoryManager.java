@@ -42,6 +42,7 @@ public class MemoryManager {
 		int blockid;
 		blockid = MemoryManager.getBlock(newJob);
 		if(blockid <= -1) {
+			DataBase.setOutPut("Cant Load Job");
 			return false;
 		}
 		else {
@@ -51,7 +52,8 @@ public class MemoryManager {
 				memoryTable.getMemoryList()[blockTable.getBlockList().get(blockid).getStart() + i] = instructionArray[i];
 			}
 			MemoryManager.updateBusy(blockid);
-			MemoryManager.addToJobList(newJob);	
+			MemoryManager.addToJobList(newJob);
+			DataBase.setOutPut("Job Was Loaded In Block :"+blockid);
 			return true;
 		}
 	}
