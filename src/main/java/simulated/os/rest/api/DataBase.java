@@ -24,8 +24,8 @@ public class DataBase {
 		return blockc;
 	}
 	public static int getJobCounter() {
-		int jobc=blockCounter;
-		blockCounter++;
+		int jobc=jobCounter;
+		jobCounter++;
 		return jobc;
 	}
 	public static String getOutPut() {
