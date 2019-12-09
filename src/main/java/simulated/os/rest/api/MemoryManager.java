@@ -39,15 +39,14 @@ public class MemoryManager {
 	// call updateBusy
 	// call addToJob list
 	public boolean loadJob(Job newJob) {
-		int blockid;
-		blockid = MemoryManager.getBlock(newJob);
+		int blockid = MemoryManager.getBlock(newJob);
 		if(blockid <= -1) {
 			DataBase.setOutPut("Cant Load Job");
 			return false;
 		}
 		else {
 			newJob.setBlockID(blockid);
-			String[] instructionArray = (String[]) newJob.getInstructions().toArray();
+			String[] instructionArray = newJob.getInstructions().toArray(new String[newJob.getInstructions().size()]);
 			for(int i=0; i<instructionArray.length; i++) {
 				memoryTable.getMemoryList()[blockTable.getBlockList().get(blockid).getStart() + i] = instructionArray[i];
 			}
@@ -64,7 +63,7 @@ public class MemoryManager {
 	private static int getBlock(Job newJob) {
 		int returnID = -1;
 		int minSize = 99;
-		Block[] blockarray = (Block[]) blockTable.getBlockList().values().toArray();
+		Block[] blockarray = blockTable.getBlockList().values().toArray(new Block[blockTable.getBlockList().values().size()]);
 		for (int i = 0; i<blockarray.length; i++) {
 			if(blockarray[i].getSize()<minSize && blockarray[i].getSize()>=newJob.getInstructions().size() && blockarray[i].getBusy()==false) {
 				minSize = blockarray[i].getSize();

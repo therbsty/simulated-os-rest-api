@@ -7,7 +7,7 @@ public class DataBase {
 	private static JobTable jobTable = new JobTable();
 	private static int blockCounter = 0;
 	private static int jobCounter = 0;
-	private static String outPut = "";
+	private static String outPut = "NO OutPut Yet";
 	
 	public static BlockTable getBlockTable() {
 		return blockTable;
@@ -24,7 +24,9 @@ public class DataBase {
 		return blockc;
 	}
 	public static int getJobCounter() {
-		return jobCounter;
+		int jobc=blockCounter;
+		blockCounter++;
+		return jobc;
 	}
 	public static String getOutPut() {
 		return outPut;

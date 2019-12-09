@@ -20,9 +20,15 @@ public class MemoryManagerController {
 	
 	@CrossOrigin()
 	@PostMapping("/memorymanager/newjob")
-	public ResponseEntity<Object> addNewJob(@RequestBody Job newJob){
+	public ResponseEntity<Object> addNewJob(@RequestBody JobInstructions jobInstructions){
+		Job newJob = new Job();
+		int i=0;
+		while(i<jobInstructions.getInstructions().length && !(jobInstructions.getInstructions()[i].equals(""))) {
+			newJob.addInstruction(jobInstructions.getInstructions()[i]);
+			i++;
+		}
 		memorymanager.loadJob(newJob);
-		return new ResponseEntity<>("",HttpStatus.OK);
+		return new ResponseEntity<>(newJob,HttpStatus.OK);
 	}
 	
 	@CrossOrigin()

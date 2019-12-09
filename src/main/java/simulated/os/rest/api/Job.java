@@ -3,7 +3,7 @@ package main.java.simulated.os.rest.api;
 import java.util.ArrayDeque;
 
 //chnaged deque
-public class Job<E> {
+public class Job {
 	private ArrayDeque<String> instructions = new ArrayDeque<String>();
 	private int blockID;
 	private int jobID;
