@@ -1,13 +1,12 @@
 package main.java.simulated.os.rest.api;
 
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class DataBase {
 	private static BlockTable blockTable = new BlockTable();
 	private static MemoryTable memoryTable = new MemoryTable();
 	private static JobTable jobTable = new JobTable();
-	private static AtomicInteger blockCounter = new AtomicInteger();
-	private static AtomicInteger jobCounter = new AtomicInteger();
+	private static int blockCounter = 0;
+	private static int jobCounter = 0;
 	private static String outPut = "";
 	
 	public static BlockTable getBlockTable() {
@@ -19,10 +18,12 @@ public class DataBase {
 	public static JobTable getJobTable() {
 		return jobTable;
 	}
-	public static AtomicInteger getBlockCounter() {
-		return blockCounter;
+	public static int getBlockCounter() {
+		int blockc=blockCounter;
+		blockCounter++;
+		return blockc;
 	}
-	public static AtomicInteger getJobCounter() {
+	public static int getJobCounter() {
 		return jobCounter;
 	}
 	public static String getOutPut() {
@@ -41,11 +42,11 @@ public class DataBase {
 		DataBase.jobTable = jobTable;
 	}
 	
-	public static void setBlockCounter(AtomicInteger blockCounter) {
+	public static void setBlockCounter(int blockCounter) {
 		DataBase.blockCounter = blockCounter;
 	}
 	
-	public static void setJobCounter(AtomicInteger jobCounter) {
+	public static void setJobCounter(int jobCounter) {
 		DataBase.jobCounter = jobCounter;
 	}
 	public static void setOutPut(String outPut) {

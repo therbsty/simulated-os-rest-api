@@ -12,7 +12,7 @@ public class Block {
 		this.end = end;
 		this.size = end - start + 1;
 		this.busy = false;
-		this.blockID = DataBase.getBlockCounter().getAndIncrement();
+		this.blockID = DataBase.getBlockCounter();
 	}
 	
 	public int getBlockID() {

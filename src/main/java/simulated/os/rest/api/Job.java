@@ -10,7 +10,7 @@ public class Job<E> {
 	
 	public Job() {
 		this.blockID = -1;
-		this.jobID = DataBase.getJobCounter().getAndIncrement();
+		this.jobID = DataBase.getJobCounter();
 	}
 	
 	public ArrayDeque<String> getInstructions(){
