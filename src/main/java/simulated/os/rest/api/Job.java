@@ -2,7 +2,6 @@ package main.java.simulated.os.rest.api;
 
 import java.util.ArrayDeque;
 
-//chnaged deque
 public class Job {
 	private ArrayDeque<String> instructions = new ArrayDeque<String>();
 	private int blockID;
@@ -37,12 +36,10 @@ public class Job {
 		this.jobID = jobID;
 	}
 	
-	// add instruction to back of dequeue
 	public void addInstruction(String instruction) {
 		instructions.add(instruction);
 		}
 	
-	// remove and return front of dequeue
 	public String removeInstruction() {
 		return instructions.remove();
 	}

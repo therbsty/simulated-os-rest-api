@@ -31,13 +31,6 @@ public class MemoryManager {
 		MemoryManager.jobTable = jobTable;
 	}
 	
-	// call getBlock save the result
-	// if result is -1 return false
-	// else
-	// set the jobs block id = to the result
-	// add the job to the memory cells the block says
-	// call updateBusy
-	// call addToJob list
 	public boolean loadJob(Job newJob) {
 		int blockid = MemoryManager.getBlock(newJob);
 		if(blockid <= -1) {
@@ -57,9 +50,6 @@ public class MemoryManager {
 		}
 	}
 	
-	// return the block id of the smallest block the job will fit in
-	// if it wont fit in any return -1
-	///NEED TO WORK ON IT
 	private static int getBlock(Job newJob) {
 		int returnID = -1;
 		int minSize = 99;
@@ -73,12 +63,10 @@ public class MemoryManager {
 		return returnID;
 	}
 	
-	// set the block busy with that id to true
 	private static void updateBusy(int blockId) {
 		blockTable.getBlockList().get(blockId).setBusy(true);	 
 	}
 	
-	// call addJob with newJob and newJob's jobID as parameters
 	private static void addToJobList(Job newJob) {
 		jobTable.addJob(newJob);
 	}

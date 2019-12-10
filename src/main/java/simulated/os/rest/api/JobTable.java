@@ -15,12 +15,10 @@ public class JobTable {
 		this.jobList=jobList;
 	}
 	
-	// add a job to joblist using jobid as key and job as value
 	public void addJob(Job job) {
 		jobList.put(job.getJobID(),job);
 	}
 	
-	//remove job from joblist by key(jobID)
 	public void removeJob(int jobID) {
 		jobList.remove(jobID);
 	}
