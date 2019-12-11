@@ -73,18 +73,27 @@ public class ProcessManager {
 			if(processor2RemainingRuns == 0 && jobTable.getJobList().higherKey(processor2CurrentJob) == null) {
 				processor2CurrentJob = -1; 
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().ceilingKey(processor2CurrentJob));
+				processor2CurrentJob = runningJob.getJobID();
 				processor2RemainingRuns=processor2TimeQuantum;
 			}
 			
-			//ran less than instructions 4 and last job on list
+			// finished and last job on list
 			else if(jobTable.getJobList().get(processor2CurrentJob)==null && jobTable.getJobList().higherKey(processor2CurrentJob) ==null){
 				processor2CurrentJob = -1;
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().ceilingKey(processor2CurrentJob));
+				processor2CurrentJob = runningJob.getJobID();
 				processor2RemainingRuns = processor2TimeQuantum;
 			}
 			
 			//ran 4 instructions and its no the last job on the list
 			else if(processor2RemainingRuns == 0){
+				runningJob = jobTable.getJobList().get(jobTable.getJobList().higherKey(processor2CurrentJob));
+				processor2CurrentJob = runningJob.getJobID();
+				processor2RemainingRuns = processor2TimeQuantum;
+			}
+			
+			// finished and is not last job on list
+			else if(jobTable.getJobList().get(processor2CurrentJob)==null){
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().higherKey(processor2CurrentJob));
 				processor2CurrentJob = runningJob.getJobID();
 				processor2RemainingRuns = processor2TimeQuantum;
