@@ -64,6 +64,7 @@ public class ProcessManager {
 	}
 	public void runProcessors() {
 		Job runningJob = null;
+		// there are no job on list
 		if(jobTable.getJobList().size()==0) {
 			DataBase.setOutPut("No Jobs To Run");
 		}
