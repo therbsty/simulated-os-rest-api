@@ -69,7 +69,7 @@ public class ProcessManager {
 		}
 		else {
 			
-			//ran 4 instructions and last job on list
+			// last job ran 4 instructions and was last job on list
 			if(processor2RemainingRuns == 0 && jobTable.getJobList().higherKey(processor2CurrentJob) == null) {
 				processor2CurrentJob = -1; 
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().ceilingKey(processor2CurrentJob));
@@ -77,7 +77,7 @@ public class ProcessManager {
 				processor2RemainingRuns=processor2TimeQuantum;
 			}
 			
-			// finished and last job on list
+			// last job finished and was last job on list
 			else if(jobTable.getJobList().get(processor2CurrentJob)==null && jobTable.getJobList().higherKey(processor2CurrentJob) ==null){
 				processor2CurrentJob = -1;
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().ceilingKey(processor2CurrentJob));
@@ -85,27 +85,27 @@ public class ProcessManager {
 				processor2RemainingRuns = processor2TimeQuantum;
 			}
 			
-			//ran 4 instructions and its no the last job on the list
+			// last job ran 4 instructions and was not the last job on the list
 			else if(processor2RemainingRuns == 0){
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().higherKey(processor2CurrentJob));
 				processor2CurrentJob = runningJob.getJobID();
 				processor2RemainingRuns = processor2TimeQuantum;
 			}
 			
-			// finished and is not last job on list
+			// last job finished and was not last job on list
 			else if(jobTable.getJobList().get(processor2CurrentJob)==null){
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().higherKey(processor2CurrentJob));
 				processor2CurrentJob = runningJob.getJobID();
 				processor2RemainingRuns = processor2TimeQuantum;
 			}
 			
-			//its not the last instruction in the job or startup
+			// current job is not on the last instruction and has remaining runs or startup
 			else {
 				runningJob = jobTable.getJobList().get(jobTable.getJobList().ceilingKey(processor2CurrentJob));
 				processor2CurrentJob = runningJob.getJobID();
 			}
 			
-			//last instruction in the job
+			// current job is on last instruction
 			if(runningJob.getInstructions().size()==1) {
 				DataBase.setOutPut("Job "+runningJob.getJobID()+" Ran Instruction "+runningJob.removeInstruction()+" And Finished");
 				ProcessManager.updateBusy(runningJob.getJobID());
@@ -113,6 +113,7 @@ public class ProcessManager {
 				ProcessManager.removeJobFromJobList(runningJob.getJobID());
 				processor2RemainingRuns = processor2TimeQuantum;
 			}
+			// current job is not on last instruction
 			else {
 				processor2RemainingRuns--;
 				DataBase.setOutPut("Job "+runningJob.getJobID()+" Ran Instruction "+runningJob.removeInstruction());
